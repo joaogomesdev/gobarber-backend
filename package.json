@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "dev:server": "ts-node-dev -r tsconfig-paths/register --unhandled-rejections=strict --inspect --transpileOnly --ignore-watch node_modules --no-notify src/shared/infra/http/server.ts",
     "start": "ts-node src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
@@ -39,6 +39,13 @@
     "uuidv4": "^6.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-typescript": "^7.10.4",
     "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.6",
     "@types/hapi__joi": "^17.1.4",
@@ -47,6 +54,8 @@
     "@types/mongodb": "^3.5.27",
     "@types/multer": "^1.4.3",
     "@types/redis": "^2.8.27",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-transform-typescript-metadata": "^0.3.0",
     "jest": "^26.2.2",
     "ts-jest": "^26.1.4",
     "ts-node-dev": "^1.0.0-pre.49",
