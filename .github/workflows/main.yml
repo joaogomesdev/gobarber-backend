@@ -35,7 +35,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key:  ${{ secrets.SSH_KEY }}
           source: "."
-          target: "test"
+          target: "~/app/gobarber-backend"
 
       #Copiar a pasta dist para dentro da Digital Ocean
         
