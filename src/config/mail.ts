@@ -13,7 +13,7 @@ export default {
 
   defaults: {
     from: {
-      email: 'joaopfg.2002@zohomail.eu',
+      email: 'joaopfg.2002@gmail.com',
       name: 'João Gomes do GoBarber'
     },
   }
