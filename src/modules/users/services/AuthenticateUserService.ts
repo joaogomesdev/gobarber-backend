@@ -1,60 +1,63 @@
-import User from '@modules/users/infra/typeorm/entities/User';
-import { sign } from 'jsonwebtoken';
-import { injectable,inject} from 'tsyringe';
 
+import { inject, injectable } from 'tsyringe';
+import { sign } from 'jsonwebtoken';
+import AppError from '@shared/errors/AppError';
+import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 
 import authConfig from '@config/Auth';
-import AppError from '@shared/errors/AppError';
-import IUsersRepository from '../repositories/IUsersRepository';
+import User from '@modules/users/infra/typeorm/entities/User';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
-interface IRequest {
-  email:string,
-  password: string
+interface IRequestDTO {
+  email: string;
+  password: string;
 }
-interface IResponse {
-  user: User
-  token: string,
+
+interface IResponseDTO {
+  user: User;
+  token: string;
 }
 
 @injectable()
 class AuthenticateUserService {
-
   constructor(
     @inject('UsersRepository')
-  private usersRepository: IUsersRepository,
+    private usersRepository: IUsersRepository,
 
     @inject('HashProvider')
-  private IHashProvider: IHashProvider
+    private hashProvider: IHashProvider
+  ) { }
 
-  ) {}
+  public async execute({
+    email,
+    password,
+  }: IRequestDTO): Promise<IResponseDTO> {
+    const user = await this.usersRepository.findByEmail(email);
 
-  public async execute({email, password}: IRequest) : Promise<IResponse>{
-      
+    if (!user) {
+      throw new AppError('Incorrect email/password combination', 401);
+    }
 
-      const user = await this.usersRepository.findByEmail(email);
+    const passwordMatched = await this.hashProvider.compareHash(
+      password,
+      user.password
+    );
 
-      if(!user){
-        throw new AppError("Incorrect email/password combination.", 401);
-      }
+    if (!passwordMatched) {
+      throw new AppError('Incorrect email/password combination', 401);
+    }
 
-      const passwordMathed = await this.IHashProvider.compareHash(password, user.password );
-      
-      if(!passwordMathed){
-        throw new AppError("Incorrect email/password combination.", 401);
-      }
+    const { secret, expiresIn } = authConfig.jwt;
 
-      const { secret, expiresIn } = authConfig.jwt;
+    const token = sign({}, secret, {
+      subject: user.id,
+      expiresIn,
+    });
 
-      const token = sign({}, secret , {
-        subject: user.id,
-        expiresIn,
-      });
-      
-      return {
-        user,
-        token
-      }
+    return {
+      user,
+      token,
+    };
   }
 }
 
