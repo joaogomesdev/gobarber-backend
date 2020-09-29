@@ -1,16 +1,14 @@
-import { getRepository } from "typeorm";
-import { injectable,inject} from 'tsyringe';
-
+import { inject, injectable } from 'tsyringe';
 import User from '@modules/users/infra/typeorm/entities/User';
 import AppError from '@shared/errors/AppError';
-import IUsersRepository from '../repositories/IUsersRepository';
+import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
-import ICacheProvider from "@shared/container/providers/CacheProvider/models/ICacheProvider";
 
-interface IRequest {
-  name: string,
-  email: string,
-  password: string
+interface IRequestDTO {
+  name: string;
+  email: string;
+  password: string;
 }
 
 @injectable()
@@ -18,37 +16,30 @@ class CreateUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
-    
     @inject('HashProvider')
-    private IHashProvider: IHashProvider,
-    
-    @inject('CacheProvider') 
-    private cacheProvider: ICacheProvider,
-    ) {}
+    private hashProvider: IHashProvider,
+    @inject('CacheProvider')
+    private cacheProvider: ICacheProvider
+  ) { }
 
-  public async execute({name, email, password}: IRequest): Promise<User>{
+  public async execute({ name, email, password }: IRequestDTO): Promise<User> {
+    const checkUserExist = await this.usersRepository.findByEmail(email);
 
+    if (checkUserExist) {
+      throw new AppError('Email address already used.');
+    }
 
-      const checkUserExists = await this.usersRepository.findByEmail(email);
+    const hashedPassword = await this.hashProvider.generateHash(password);
 
-      if(checkUserExists){
-        throw new AppError("Email address already used");
-      }
-      const hashedPassword = await this.IHashProvider.generateHash(password);
+    const user = await this.usersRepository.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
-      const user = await this.usersRepository.create({
-        name,
-        email,
-        password: hashedPassword,
-      });
+    await this.cacheProvider.invalidatePrefix('providers-list');
 
-      await this.cacheProvider.invalidatePrefix('providers-list');
-
-      return user;
-        
-
-   
-
+    return user;
   }
 }
 
