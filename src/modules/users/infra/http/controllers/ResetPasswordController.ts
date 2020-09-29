@@ -20,8 +20,6 @@ export default class ResetPasswordController{
    
   return response.status(204).json();
 
-
-
 }
 
 }
