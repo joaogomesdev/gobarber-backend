@@ -1,0 +1,45 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      #Install Node
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.3
+        with:
+          node-version: 12.x
+       
+      #Instalar as dependencias NPM/YARN
+      - name: Install dependencies
+        run: yarn
+        
+      #Executar a build
+      - name: Run build
+        run: yarn build
+      
+      - name: Copy dist to Digital Ocean
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key:  ${{ secrets.SSH_KEY }}
+          source: "dist"
+          target: "test"
+
+      #Copiar a pasta dist para dentro da Digital Ocean
+        
+      #Substituir o codigo existente na pasta "dist" pelo novo codigo
+      #Executar "yarn" na Digital Ocean
+      #Executar as migrations do TypeORM
+      #Restart Node Server
