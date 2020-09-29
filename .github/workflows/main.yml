@@ -52,6 +52,35 @@ jobs:
           target: "~/app/gobarber-backend"
 
       #Executar "yarn" na Digital Ocean
-        
+      - name: Install dependencies on Digital Ocean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key:  ${{ secrets.SSH_KEY }}
+          script: | 
+            cd ~/app/gobarber-backend 
+            yarn
+            
       #Executar as migrations do TypeORM
+      - name: Run migrations on Digital Ocean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key:  ${{ secrets.SSH_KEY }}
+          script: | 
+            cd ~/app/gobarber-backend 
+            ./node_modules/.bin/typeorm migration:run
+            
       #Restart Node Server
+      - name: Restart Node Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key:  ${{ secrets.SSH_KEY }}
+          script: pm2 restart gobarber-api
