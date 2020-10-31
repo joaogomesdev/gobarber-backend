@@ -1,70 +1,165 @@
+<h1 align="center">
+  <img alt="Logo" src="https://res.cloudinary.com/joaogomes5/image/upload/v1604107694/Captura_de_ecr%C3%A3_2020-10-31_012746_rwwiy7.jpg" width="200px">
+</h1>
 
-# Recuperar Password
+<h3 align="center">
+  Express Application for GoBarber project
+</h3>
 
-**Requesitos funcionais**
+<p align="center">The best way to schedule your service!</p>
 
-  - O Cliente deve poder recuperar a sua password informando o e-mail;
-  - O Cliente deve receber um e-mail com as instruções para recuperar a password;
-  - O Cliente deve poder fazer o reset da password;
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/EJoaoGomes5/gobarber-backend?color=%23FF9000">
 
-**Requesitos não funcionais**
+  <a href="https://www.linkedin.com/in/JoaoGomes5/" target="_blank" rel="noopener noreferrer">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-João%20Gomes-%23FF9000">
+  </a>
 
-  - Utilizar Mailtrap para o teste de envios em ambiente de desenvolvimento;
-  - Utilizar Amazon SES para envios em produção;
-  - O envio de emails deve ser executado em segundo plano(Background job);
-  
-**Regras de negocio**
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/JoaoGomes5/gobarber-backend?color=%23FF9000">
 
-  - O link enviado por email para recuperar a password deve expirar em 2h;
-  - O Cliente precisa confirmar a nova password ao fazer o reset da password;
+  <a href="https://github.com/JoaoGomes5/gobarber-backend/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/JoaoGomes5/gobarber-backend?color=%23FF9000">
+  </a>
 
-# Atualização do Perfil
+  <a href="https://github.com/JoaoGomes5/gobarber-backend/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/JoaoGomes5/gobarber-backend?color=%23FF9000">
+  </a>
 
-  **Requesitos funcionais**
+  <img alt="GitHub" src="https://img.shields.io/github/license/JoaoGomes5/gobarber-backend?color=%23FF9000">
+</p>
 
-  - O Cliente deve poder atualizar o nome , email e password;
+<p align="center">
+  <a href="#%EF%B8%8F-about-the-project">About the project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-how-to-contribute">How to contribute</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-license">License</a>
+</p>
 
-  **Regras de negocio**
+<p id="insomniaButton" align="center">
+  <a href="https://insomnia.rest/run/?label=GoBarber%20-%20EliasGcf&uri=https%3A%2F%2Fraw.githubusercontent.com%2FEliasGcf%2Fgobarber-api%2Fmaster%2FInsomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+</p>
 
-  - O Cliente não pode alterar o email para um email já utilizado;
-  - Para atualizar a password é necessario indicar a password antiga;
-  - Para atualizar a password é necessario confirmar a password;
+## 💇🏻‍♂️ About the project
 
-# Painel do Barbeiro
-  
-  **Requesitos funcionais**
+This api provides everything needed to organize appointments between the barbers and customers.
 
-    - O Cliente  deve poder fazer a listagem das suas  marcações de um dia especifico;
-    - O Barbeiro deve poder receber uma notificação sempre que houver uma nova marcação;
-    - O Barbeiro deve poder visualizar as notificações não lidas;
-    
-  **Requesitos não funcionais**
+Customers can choose the best time available to them.
 
-    - As marcações do Barbeiro no dia devem ser armazenadas em cache;
-    - As notificações do Barbeiro devem ser armazenadas no MongoDB;
-    - As notificações do Barbeiro devem ser enviadas em tempo-real utilizando o Socket.io;
-  
-  **Regras de negocio**
+Providers can see all their appointments, manage the times, also see if one client canceled the schedule.
 
-    - A notificação deve ter um Status de lida ou de não lida para que o Barbeiro possa controlar;
+To see the **web client**, click here: [GoBarber Web](https://github.com/JoaoGomes5/gobarber-frontend)<br />
+To see the **mobile client**, click here: [GoBarber Mobile](https://github.com/JoaoGomes5/gobarber-mobile)
 
-# Agendamento de serviços
+## 🚀 Technologies
 
-  **Requesitos funcionais**
+Technologies that I used to develop this api
 
-    - O Cliente deve poder fazer a listagem de todos os barbeiros registados;
-    - O Cliente deve poder fazer a listagem os dias de um mês com pelo menos um horário disponível de um barbeiro;
-    - O Cliente deve poder fazer a listagem dos horários de um dia especifico de barbeiro;
-    - O Cliente deve poder fazer uma reserva com um barbeiro;
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Express](https://expressjs.com/pt-br/)
+- [Multer](https://github.com/expressjs/multer)
+- [TypeORM](https://typeorm.io/#/)
+- [JWT-token](https://jwt.io/)
+- [uuid v4](https://github.com/thenativeweb/uuidv4/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Date-fns](https://date-fns.org/)
+- [Jest](https://jestjs.io/)
+- [SuperTest](https://github.com/visionmedia/supertest)
+- [Husky](https://github.com/typicode/husky)
+- [Commitlint](https://github.com/conventional-changelog/commitlint)
+- [Commitizen](https://github.com/commitizen/cz-cli)
+- [Eslint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [EditorConfig](https://editorconfig.org/)
 
-  **Requesitos não funcionais**
+## 💻 Getting started
 
-    - A listagem de barbeiros deve ser armazenada em cache;
-    
-  **Regras de negocio**
+Import the `Insomnia.json` on Insomnia App or click on [Run in Insomnia](#insomniaButton) button
 
-    - Cada marcação deve durar 1h;
-    - As marcações devem estar disponiveis das X(8) as X(18h) horas (Primeira marcação as X e a última as X - 1h);
-    - O cliente não pode fazer uma marcação em um horário já ocupado;
-    - O cliente não pode fazer uma marcação em um horário que já passou;
-    - O cliente não pode fazer uma marcação consigo mesmo;
+### Requirements
+
+- [Node.js](https://nodejs.org/en/)
+- [Yarn](https://classic.yarnpkg.com/) or [npm](https://www.npmjs.com/)
+- One instance of [PostgreSQL](https://www.postgresql.org/)
+
+> Obs.: I recommend use docker
+
+**Clone the project and access the folder**
+
+```bash
+$ git clone https://github.com/JoaoGones/gobarber-backend.git && cd gobarber-api
+```
+
+**Follow the steps below**
+
+```bash
+# Install the dependencies
+$ yarn
+
+# Make a copy of '.env.example' to '.env'
+# and set with YOUR environment variables.
+# The aws variables do not need to be filled for dev environment
+$ cp .env.example .env
+
+# Create the instance of postgreSQL using docker
+$ docker run --name gobarber-postgres -e POSTGRES_USER=docker \
+              -e POSTGRES_DB=gobarber -e POSTGRES_PASSWORD=docker \
+              -p 5432:5432 -d postgres
+
+# Create the instance of mongoDB using docker
+$ docker run --name gobarber-mongodb -p 27017:27017 -d -t mongo
+
+# Create the instance of redis using docker
+$ docker run --name gobarber-redis -p 6379:6379 -d -t redis:alpine
+
+# Make a copy of 'ormconfig.example.json' to 'ormconfig.json'
+# and set the values, if they are not filled,
+# to connect with docker database containers
+$ cp ormconfig.example.json ormconfig.json
+
+# Once the services are running, run the migrations
+$ yarn typeorm migration:run
+
+# To finish, run the api service
+$ yarn dev:server
+
+# Well done, project is started!
+```
+
+## 🤔 How to contribute
+
+**Make a fork of this repository**
+
+```bash
+# Fork using GitHub official command line
+# If you don't have the GitHub CLI, use the web site to do that.
+
+$ gh repo fork JoaoGomes5/gobarber-backend
+```
+
+**Follow the steps below**
+
+```bash
+# Clone your fork
+$ git clone your-fork-url && cd gobarber-api
+
+# Create a branch with your feature
+$ git checkout -b my-feature
+
+# Make the commit with your changes
+$ git commit -m 'feat: My new feature'
+
+# Send the code to your remote branch
+$ git push origin my-feature
+```
+
+After your pull request is merged, you can delete your branch
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+Made with 💜 &nbsp;by João Gomes 👋 &nbsp;[See my linkedin](https://www.linkedin.com/in/joaogomes5/)
