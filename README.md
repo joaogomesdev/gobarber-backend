@@ -162,4 +162,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with 💜 &nbsp;by João Gomes 👋 &nbsp;[See my linkedin](https://www.linkedin.com/in/joaogomes5/)
+Made with 💜 &nbsp;by João Gomes 👋 &nbsp;[See my linkedin](https://www.linkedin.com/in/joão-gomes-b732541a4)
