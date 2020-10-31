@@ -37,7 +37,7 @@
 </p>
 
 <p id="insomniaButton" align="center">
-  <a href="https://insomnia.rest/run/?label=GoBarber%20-%20EliasGcf&uri=https://raw.githubusercontent.com/JoaoGomes5/gobarber-backend/master/Insomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+  <a href="https://insomnia.rest/run/?label=GoBarberAPi&uri=https%3A%2F%2Fgithub.com%2FJoaoGomes5%2Fgobarber-backend%2Fblob%2Fmaster%2FInsomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
 </p>
 
 ## 💇🏻‍♂️ About the project
