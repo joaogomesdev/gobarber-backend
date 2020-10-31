@@ -2,9 +2,9 @@
   <img alt="Logo" src="https://res.cloudinary.com/joaogomes5/image/upload/v1604107694/Captura_de_ecr%C3%A3_2020-10-31_012746_rwwiy7.jpg" width="400px">
 </h1>
 
-<h3 align="center">
-  Express Application for GoBarber project
-</h3>
+<h2 align="center">
+  💇 GoBarber Api
+</h2>
 
 <p align="center">The best way to schedule your service!</p>
 
