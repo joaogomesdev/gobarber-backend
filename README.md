@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Logo" src="https://res.cloudinary.com/joaogomes5/image/upload/v1604107694/Captura_de_ecr%C3%A3_2020-10-31_012746_rwwiy7.jpg" width="200px">
+  <img alt="Logo" src="https://res.cloudinary.com/joaogomes5/image/upload/v1604107694/Captura_de_ecr%C3%A3_2020-10-31_012746_rwwiy7.jpg" width="400px">
 </h1>
 
 <h3 align="center">
@@ -37,7 +37,7 @@
 </p>
 
 <p id="insomniaButton" align="center">
-  <a href="https://insomnia.rest/run/?label=GoBarber%20-%20EliasGcf&uri=https%3A%2F%2Fraw.githubusercontent.com%2FEliasGcf%2Fgobarber-api%2Fmaster%2FInsomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+  <a href="https://insomnia.rest/run/?label=GoBarber%20-%20EliasGcf&uri=https://raw.githubusercontent.com/JoaoGomes5/gobarber-backend/master/Insomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
 </p>
 
 ## 💇🏻‍♂️ About the project
